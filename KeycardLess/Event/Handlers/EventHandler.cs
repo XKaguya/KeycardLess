@@ -11,7 +11,7 @@ namespace KeycardLess
         public void OnDoorInteract(InteractingDoorEventArgs ev)
         {
             Log.Debug("Entering method OnDoorInteract");
-
+            
             try
             {
                 if (!KeycardLess.Instance.Config.AffectDoors)
@@ -19,7 +19,7 @@ namespace KeycardLess
                     return;
                 }
                 
-                Log.Debug($"IsAllowed {ev.IsAllowed}, Did player have permissions {PlayerHandler.HasPermission(ev.Player, ev.Door.RequiredPermissions.RequiredPermissions)}, Current Item: {ev.Player.CurrentItem}");
+                Log.Debug($"IsAllowed {ev.IsAllowed}, Has permission: {PlayerHandler.HasPermission(ev.Player, ev.Door.RequiredPermissions.RequiredPermissions)}, Current Item: {ev.Player.CurrentItem}");
 
                 if (!ev.IsAllowed && PlayerHandler.HasPermission(ev.Player, ev.Door.RequiredPermissions.RequiredPermissions) && !ev.Door.IsLocked)
                 {
